@@ -32,11 +32,9 @@ public class Car {
 	@Column(name = "dailyPrice")
 	private double dailyPrice;
 	
-	@Column(name = "modelYear")
-	private int modelYear;
 	
 	@Column(name = "state")
-	private int state;
+	private boolean state;
 	
 	@ManyToOne
 	@JoinColumn(name = "model_id")

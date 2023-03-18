@@ -2,14 +2,13 @@ package kodlama.io.rentACar.webApi.controllers;
 
 import java.util.List;
 
-import org.aspectj.asm.AsmManager.ModelInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import kodlama.io.rentACar.business.abstracts.ModelService;
 import kodlama.io.rentACar.business.requests.CreateModelRequest;

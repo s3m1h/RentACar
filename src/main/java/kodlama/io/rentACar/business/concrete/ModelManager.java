@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kodlama.io.rentACar.business.abstracts.ModelService;
 import kodlama.io.rentACar.business.requests.CreateModelRequest;

@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateModelRequest {
-	
-	private String name;
-	private int modelYear;
-	private int brandId;
-	
+public class CreateCarRequest {
+	private int colorId;
+	private int modelId;
+	private double dailyPrice;
+	private boolean state;
+	private String plate;
 }

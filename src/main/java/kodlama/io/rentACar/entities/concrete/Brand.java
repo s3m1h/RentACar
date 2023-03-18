@@ -2,7 +2,8 @@ package kodlama.io.rentACar.entities.concrete;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@JsonIgnoreProperties
 public class Brand {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +33,6 @@ public class Brand {
 	private String name;
 	
 	@OneToMany(mappedBy = "brand")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL) 
 	List<Model> models;
 }

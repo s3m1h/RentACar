@@ -2,6 +2,8 @@ package kodlama.io.rentACar.entities.concrete;
 
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +38,10 @@ public class Model {
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	
+	@Column(name = "modelYear")
+	private int modelYear;
+	
 	@OneToMany(mappedBy = "model")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL) 
 	private List<Car> cars;
 }
