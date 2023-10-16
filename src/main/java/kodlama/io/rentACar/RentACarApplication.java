@@ -21,6 +21,7 @@ import kodlama.io.rentACar.core.utilities.exceptions.ValidationProblemDetails;
 @RestControllerAdvice
 public class RentACarApplication {
 
+	//semih
 	public static void main(String[] args) {
 		SpringApplication.run(RentACarApplication.class, args);
 	}
