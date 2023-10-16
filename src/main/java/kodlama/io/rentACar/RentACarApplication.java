@@ -21,11 +21,12 @@ import kodlama.io.rentACar.core.utilities.exceptions.ValidationProblemDetails;
 @RestControllerAdvice
 public class RentACarApplication {
 
-	//semih
+	//main
 	public static void main(String[] args) {
 		SpringApplication.run(RentACarApplication.class, args);
 	}
-	
+
+
 	@ExceptionHandler
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public ProblemDetails handleBusinessException(BusinessException businessException) {
