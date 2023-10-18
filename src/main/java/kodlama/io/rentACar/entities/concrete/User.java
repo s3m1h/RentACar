@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Long id;
     @Column(name="firstname")
@@ -31,6 +31,10 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name="birtdate")
     private Date birthdate;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private UserRole role;
 
     @OneToMany(mappedBy = "user")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)

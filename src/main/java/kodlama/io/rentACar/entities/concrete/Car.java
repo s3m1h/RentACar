@@ -1,17 +1,13 @@
 package kodlama.io.rentACar.entities.concrete;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+
+import java.util.List;
 
 @Table(name = "cars")
 @Getter
@@ -31,8 +27,7 @@ public class Car {
 	
 	@Column(name = "dailyPrice")
 	private double dailyPrice;
-	
-	
+
 	@Column(name = "state")
 	private boolean state;
 	
@@ -43,4 +38,8 @@ public class Car {
 	@ManyToOne
 	@JoinColumn(name = "color_id")
 	private Color color;
+
+	@OneToMany(mappedBy = "car")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	List<Rental> rentals;
 }

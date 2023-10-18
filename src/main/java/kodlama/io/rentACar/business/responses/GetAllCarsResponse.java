@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllCarsResponse {
-	
+	private int id;
 	private double dailyPrice;
 	private boolean state;
 	private String colorName;

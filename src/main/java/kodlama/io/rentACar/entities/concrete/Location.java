@@ -12,6 +12,7 @@ import java.util.List;
 public class Location {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "country")
     private String country;

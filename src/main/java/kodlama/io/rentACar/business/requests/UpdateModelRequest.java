@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateColorRequest {
+public class UpdateModelRequest {
+    private int id;
     private String name;
+    private int modelYear;
+    private int brandId;
 }

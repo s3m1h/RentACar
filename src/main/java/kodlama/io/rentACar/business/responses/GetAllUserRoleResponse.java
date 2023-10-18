@@ -1,4 +1,4 @@
-package kodlama.io.rentACar.business.requests;
+package kodlama.io.rentACar.business.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateColorRequest {
-    private String name;
+public class GetAllUserRoleResponse {
+    private Long id;
+    private String type;
 }

@@ -3,6 +3,10 @@ package kodlama.io.rentACar.business.concrete;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import kodlama.io.rentACar.business.requests.UpdateModelRequest;
+import kodlama.io.rentACar.core.utilities.results.Result;
+import kodlama.io.rentACar.core.utilities.results.SuccessDataResult;
+import kodlama.io.rentACar.core.utilities.results.SuccessResult;
 import org.springframework.stereotype.Service;
 
 import kodlama.io.rentACar.business.abstracts.ModelService;
@@ -21,21 +25,33 @@ public class ModelManager implements ModelService{
 	
 	
 	@Override
-	public List<GetAllModelsResponse> getAll() {
+	public SuccessDataResult<List<GetAllModelsResponse>> getAll() {
 		List<Model> models = this.modelRepository.findAll();
 		List<GetAllModelsResponse> getAllModelsResponses = 
 				models.stream().map(model -> this.modelMapperService.forResponse()
 						.map(model, GetAllModelsResponse.class)).collect(Collectors.toList());
-		
-		return getAllModelsResponses;
+		return new SuccessDataResult<List<GetAllModelsResponse>>(getAllModelsResponses);
 	}
 	@Override
-	public void add(CreateModelRequest createModelRequest) {
+	public Result add(CreateModelRequest createModelRequest) {
 		Model model = this.modelMapperService.forRequest().map(createModelRequest, Model.class);
-		
 		modelRepository.save(model);
-		
+		return new SuccessResult();
 	}
+
+	@Override
+	public Result delete(int id) {
+		modelRepository.deleteById(id);
+		return new SuccessResult();
+	}
+
+	@Override
+	public Result update(UpdateModelRequest updateModelRequest) {
+		Model model = this.modelMapperService.forRequest().map(updateModelRequest,Model.class);
+		modelRepository.save(model);
+		return new SuccessResult();
+	}
+
 	@Override
 	public GetAllModelsResponse getByName(String modelName) {
 		Model model = this.modelRepository.getByName(modelName);
@@ -48,9 +64,10 @@ public class ModelManager implements ModelService{
 		return this.modelMapperService.forResponse().map(models, GetAllModelsResponse.class);
 	}
 	@Override
-	public List<GetAllModelsResponse> getByNameOrBrandId(String modelName, int brandId) {
+	public SuccessDataResult<List<GetAllModelsResponse>> getByNameOrBrandId(String modelName, int brandId) {
 		List<Model> models = this.modelRepository.getByNameOrBrand_Id(modelName, brandId);
-		return models.stream().map(m -> modelMapperService.forResponse().map(m, GetAllModelsResponse.class)).collect(Collectors.toList());
+		List<GetAllModelsResponse> getAllModelsResponses= models.stream().map(m -> modelMapperService.forResponse().map(m, GetAllModelsResponse.class)).collect(Collectors.toList());
+		return new SuccessDataResult<List<GetAllModelsResponse>>(getAllModelsResponses);
 	}
 
 }

@@ -26,8 +26,10 @@ public class CarManager implements CarService{
 	@Override
 	public List<GetAllCarsResponse> getAll() {
 		List<Car> cars = this.carRepository.findAll();
-		List<GetAllCarsResponse> getAllCarsResponses = cars.stream().map(c->this.modelMapperService.forResponse().map(c, GetAllCarsResponse.class)).collect(Collectors.toList());
-		
+		List<GetAllCarsResponse> getAllCarsResponses =
+				cars.stream()
+						.map(c->this.modelMapperService.forResponse()
+								.map(c, GetAllCarsResponse.class)).collect(Collectors.toList());
 		return getAllCarsResponses;
 	}
 

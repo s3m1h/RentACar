@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 @Table(name = "colors")
 @Getter
@@ -31,5 +32,6 @@ public class Color {
 	private String name;
 	
 	@OneToMany(mappedBy = "color")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	List<Car> cars;
 }

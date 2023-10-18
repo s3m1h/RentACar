@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 public class Rental {
     @Id
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne
