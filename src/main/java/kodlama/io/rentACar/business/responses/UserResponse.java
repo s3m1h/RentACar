@@ -1,13 +1,14 @@
 package kodlama.io.rentACar.business.responses;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllUserRoleResponse {
-    private Long id;
-    private String type;
+public class UserResponse {
+    private String token;
 }
